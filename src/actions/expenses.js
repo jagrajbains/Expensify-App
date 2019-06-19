@@ -85,3 +85,15 @@ export const startRemoveExpenses = ({ id } = {}) => {
       });
   };
 };
+
+//startEditExpense
+export const startEditExpense = (id, updates) => {
+  return dispatch => {
+    return database
+      .ref(`Expenses/${id}`)
+      .update(updates)
+      .then(() => {
+        dispatch(editExpense(id, updates));
+      });
+  };
+};
